@@ -1,0 +1,208 @@
+﻿CREATE DATABASE supermercado;
+
+USE supermercado;
+
+CREATE TABLE cliente(
+	codigo 		INT AUTO_INCREMENT PRIMARY KEY,
+	nomeCliente 	VARCHAR(80),
+	cpf 		INT(14),
+	rg 		INT(12),
+	dataNasc 	DATE,
+	ativo 		BOOLEAN,
+	endereco 	VARCHAR(80),
+	numCasa 	VARCHAR(10),
+	bairro 		VARCHAR(45),
+	cidade 		VARCHAR(45),
+	uf 		CHAR(2),
+	cep 		VARCHAR(9),
+	foneRes 	VARCHAR(8),
+	foneCel 	VARCHAR(9),
+	ddd 		CHAR(3),
+	email 		VARCHAR(50),
+	obs 		TEXT
+);
+
+INSERT INTO cliente (codigo, nomeCliente, cpf, rg, dataNasc, ativo, endereco, numCasa, bairro, cidade, 
+uf, cep, foneRes, foneCel, ddd, email, obs) VALUES ("", "João da Silva", "58940256825", "584052015",
+"1994-05-30", "1", "Rua Jose Dirceu", "56", "Ourinhos", "São Paulo", "SP", "08982000", "47485231", "965238749",
+"11", "joaosilva@email.com", "Cliente Novo");
+
+CREATE TABLE fornecedor(
+	codFornecedor 	int AUTO_INCREMENT PRIMARY KEY ,
+	nomeFornecedor 	varchar(100),
+	ativo 		tinyint(1),
+	cnpj 		varchar(18),
+	categoria 	varchar(50),
+	endereco 	varchar(100),
+	bairro 		varchar(45),
+	numero 		varchar(10),
+	cidade	 	varchar(45),
+	uf 		char(2),
+	cep 		varchar(9),
+	ddd 		char(2),
+	telefone 	varchar(9),
+	telefone2 	varchar(9),
+	telefone3 	varchar(9),
+	email 		varchar(100),
+	obs 		text
+);
+
+INSERT INTO fornecedor (codFornecedor, nomeFornecedor, ativo, cnpj, categoria, endereco, bairro, numero, 
+cidade, uf, cep, ddd, telefone, telefone2, telefone3, email, obs) VALUES ("", "Ypê" , 1, "00.220.818/0001-10",
+"Limpeza", "2ª Travessa Caçulé", "Várzea" , "158", "Recife" , "PE" , "50741-272" , "81" , "2640-8927" , 
+"98954-7783" , "96758-3615" , "contatoype@indutriasype.net" , "");
+
+INSERT INTO fornecedor (codFornecedor, nomeFornecedor, ativo, cnpj, categoria, endereco, bairro, numero, 
+cidade, uf, cep, ddd, telefone, telefone2, telefone3, email, obs) VALUES ("" , "Camil" , 1 , "72.380.219/0001-74" ,
+"Alimentos" , "Rua Fernando de Noronha" , "Vila Didi" , "635", "Jundiaí" , "SP" , "13203-310" , "11" , "3610-8402" ,
+"98845-5587" , "99834-2716" , "posvenda@camilltda.com.br" , "Geralmente apenas cargas com Arroz");
+
+INSERT INTO fornecedor (codFornecedor, nomeFornecedor, ativo, cnpj, categoria, endereco, bairro, numero, 
+cidade, uf, cep, ddd, telefone, telefone2, telefone3, email, obs) VALUES ("" , "Qmix" , 1 , "69.434.922/0001-03" ,
+"Alimentos" , "Avenida Fernando Ferrari" , "Aeroporto" , "101", "Vitória" , "ES" , "29075-625" , "27" , "2752-1292" ,
+"98618-0572" , "97635-1876" , "estoque@qmixqualy.com.br" , "Margarina Qualy");
+
+CREATE TABLE funcionario(
+	codFuncionario 	INT AUTO_INCREMENT PRIMARY KEY,
+	nomeFuncionario VARCHAR(100),
+	dataNasc 	DATE,
+	cargo 		VARCHAR(50),
+	ativo 		BOOLEAN,
+	cpf 		VARCHAR(14),
+	rg 		VARCHAR(12),
+	sexo 		CHAR(1),
+	estadoCivil 	CHAR(1),
+	dataContratado 	DATE,
+	endereco 	VARCHAR(100),
+	bairro 		VARCHAR(45),
+	cidade 		VARCHAR(45),
+	uf 		CHAR(2),
+	cep 		VARCHAR(9), 
+	ddd 		CHAR(2),
+	foneCel 	VARCHAR(9),
+	foneRes 	VARCHAR(9),
+	email 		VARCHAR(100),
+	obs 		TEXT
+);
+
+INSERT INTO funcionario (nomeFuncionario, dataNasc, cargo, ativo, cpf, rg, sexo, estadoCivil, dataContratado, 
+endereco, bairro, cidade, uf, cep, ddd, foneCel, foneRes, email, obs) VALUES("Marcelo Dias da Silva", "1999-12-20",
+"Caixa", "1", "48209038718", "545964811", "M", "S", "2018-10-02", "Avenida Paulista, 2000", "Consolação", "São Paulo", 
+"SP", "08235890", "11", "970878090", "20508090", "marcelodias@hotmail.com", "Funcionario em treinamento");
+
+INSERT INTO funcionario (nomeFuncionario, dataNasc, cargo, ativo, cpf, rg, sexo, estadoCivil, dataContratado, 
+endereco, bairro, cidade, uf, cep, ddd, foneCel, foneRes, email, obs) VALUES("Cleiton Neves Filho", "1996-02-02",
+"Segurança", "1", "48217035618", "545945707", "M", "C", "2017-09-10", "Rua dos Jovens, 107", "Sé", "São Paulo",
+"SP", "08234590", "11", "975380487", "20485820", "cleitonrasta@hotmail.com", "");
+
+CREATE TABLE produto(
+	codProduto	 	int(5) AUTO_INCREMENT PRIMARY KEY,
+	nome 			varchar(40),
+	fabricante 		varchar(40),
+	codFabricante 		int(10),
+	custo 			float(7,2),
+	despesas 		float(7,2),
+	lucro 			float(7,2),
+	precoVenda 		float(7,2),
+	promocao 		boolean   ,
+	precoPromocio 		float(7,2),
+	categoria 		char(1),
+	peso 			float(7,2),
+	ativo 			boolean   ,
+	descricao 		text	   
+);
+
+INSERT INTO produto (codProduto , nome , fabricante , codFabricante , precoVenda , custo, despesas, lucro, promocao, precoPromocio, categoria, peso , ativo, descricao) VALUES (0 , 'Batata kg', 'Fazenda', '8596', '1.99', '0.15' ,'0.20' , '0.90', '0', '1.99', 'A', '1', '1', 'Batata lavada');
+
+INSERT INTO produto (codProduto , nome , fabricante , codFabricante , precoVenda , custo, despesas, lucro, promocao, precoPromocio, categoria, peso , ativo, descricao) VALUES (0 , 'Banana kg', 'Fazenda', '784', '3.50' , '0.5', '0.072', '1.50', '0', '2.50', 'F', '1', '1', 'Banana nanica');
+
+INSERT INTO produto (codProduto , nome , fabricante , codFabricante , precoVenda , custo, despesas, lucro, promocao, precoPromocio, categoria, peso , ativo, descricao) VALUES (0 , 'Café kg', 'Mellita', '6523', '11.99', '3', '2', '7', '0', '8.99', 'F', '1', '1', 'Café em pó tradicional');
+
+INSERT INTO produto (codProduto , nome , fabricante , codFabricante , precoVenda , custo, despesas, lucro, promocao, precoPromocio, categoria, peso , ativo, descricao) VALUES (0 , 'Coxão duro kg' , 'JBS', '35', '21.99', '2', '1', '18', '0', '17.99', 'C', '1', '1', 'Carne magra');
+
+INSERT INTO produto (codProduto , nome , fabricante , codFabricante , precoVenda , custo, despesas, lucro, promocao, precoPromocio, categoria, peso , ativo, descricao) VALUES (0 , 'Pão francês kg' , 'Fabricante', '7845', '1.50', '0.5', '0.072', '0.80', '0', '0.99', 'P', '0.100', '1', 'Pão fresco');
+
+INSERT INTO produto (codProduto , nome , fabricante , codFabricante , precoVenda , custo, despesas, lucro, promocao, precoPromocio, categoria, peso , ativo, descricao) VALUES (0 , 'Sabão líquido' , 'Omo', '541', '9.49' ,'3' , '2', '8' , '0', '6.49', 'L', '1.1', '1', 'Sabão líquido Omo');
+
+INSERT INTO produto (codProduto , nome , fabricante , codFabricante , precoVenda , custo, despesas, lucro, promocao, precoPromocio, categoria, peso , ativo, descricao) VALUES (0 , 'Coca Cola' , 'Coca Cola', '23344', '8', '2', '1', '5', '1', '7.50', 'B', '0.200', '1', 'Bebida Coca Cola');
+
+INSERT INTO produto (codProduto , nome , fabricante , codFabricante , precoVenda , custo, despesas, lucro, promocao, precoPromocio, categoria, peso , ativo, descricao) VALUES (0 , 'Detergente' , 'YPE', '3344', '1.572', '0.5', '0.072', '1', '0', '0.99', 'L', '20', '1', 'Detergente lava louça');
+
+INSERT INTO produto (codProduto , nome , fabricante , codFabricante , precoVenda , custo, despesas, lucro, promocao, precoPromocio, categoria, peso , ativo, descricao) VALUES (0 , 'Fralda Pampers', 'Pampers', '667778', '15', '3', '2', '10', '0', '12', 'H', '0.100', '1', 'Lenco umedicido infantil');
+
+
+CREATE TABLE IF NOT EXISTS venda (
+	idVenda 	INT(11) AUTO_INCREMENT PRIMARY KEY,
+	idProduto1 	INT(11),
+	qtde1 		INT(3),
+	prUnitario1 	FLOAT(7,2),
+	prTotal1 	FLOAT(7,2),
+	idProduto2 	INT(11),
+	qtde2 		INT(3),
+	prUnitario2 	FLOAT(7,2),
+	prTotal2 	FLOAT(7,2),
+	idProduto3 	INT(11),
+	qtde3 		INT(3),
+	prUnitario3 	FLOAT(7,2),
+	prTotal3 	FLOAT(7,2),
+	idProduto4 	INT(11),
+	qtde4 		INT(3),
+	prUnitario4 	FLOAT(7,2),
+	prTotal4 	FLOAT(7,2),
+	idProduto5 	INT(11),
+	qtde5 		INT(3),
+	prUnitario5 	FLOAT(7,2),
+	prTotal5 	FLOAT(7,2),
+	dataVenda 	DATE,
+	totalCompra 	FLOAT(7,2)
+);
+
+INSERT INTO venda (idProduto1, qtde1, prUnitario1, prTotal1, idProduto2, qtde2, prUnitario2, prTotal2, idProduto3, qtde3, prUnitario3, prTotal3, dataVenda   , totalCompra) VALUES
+		  ('7'	     , '2'  , '8'        , '16'    , '8'       , '2'  , '1.57'     , '3.14'  , '4'       , '3'  , '21.99'    , '65.97' , "2018-11-30", '85.11');
+
+INSERT INTO venda (idProduto1, qtde1, prUnitario1, prTotal1, dataVenda, totalCompra) VALUES
+		  ('5'	     , '2'  , '1.5'      , '3'     , "2018-11-15", '3');
+
+INSERT INTO venda VALUES (
+			  '0',
+			  '1', '2', '1.99' , '3.98' ,
+			  '2', '1', '3.5'  , '3.5'  ,
+ 			  '3', '2', '11.99', '23.98',
+			  '4', '1', '21.99', '21.99',
+			  '6', '3', '9.49' , '28.47',
+			  "2018-11-27", '81.92'
+			 );
+
+
+CREATE TABLE estoque(
+	codEstoque 		INT AUTO_INCREMENT PRIMARY KEY,
+	codProduto 		VARCHAR(5),
+	nomeProduto 		VARCHAR(100),
+	codFornecedor 		VARCHAR(5),
+	codFuncionario 		VARCHAR(4),
+	nomeFuncionario 	VARCHAR(100),
+	categoria 		VARCHAR(50),
+	precoUnidade 		FLOAT(7,2),
+	codLote 		VARCHAR(4),
+	dataRecebimento 	DATE,
+	dataFabricacao  	DATE,
+	dataValidade 		DATE,
+	qtdeEstoque 		INT(5),
+	ativo 			BOOLEAN,
+	obs 			TEXT
+);
+
+INSERT INTO estoque (codProduto, nomeProduto, codFornecedor, codFuncionario, nomeFuncionario, categoria, 
+precoUnidade, codLote, dataRecebimento, dataFabricacao, dataValidade, qtdeEstoque, ativo, obs) VALUES ('14785',
+'Suco de Laranja Dubom', '12345', '0001', 'Maria Eduarda dos Santos', 'bebidas', 4.90, '8885', '2018-10-07', '2018-10-02',
+'2020-03-27', 431, 1, 'Suco com polpa de Laranja, mais vendido');
+
+INSERT INTO estoque (codProduto, nomeProduto, codFornecedor, codFuncionario, nomeFuncionario, categoria, 
+precoUnidade, codLote, dataRecebimento, dataFabricacao, dataValidade, qtdeEstoque, ativo, obs) VALUES ('73915',
+'Shampoo Kabelon Ultra-Liso', '66333', '0001', 'Maria Eduarda dos Santos', 'higiene', 8.00, '0242', '2018-10-05', '2018-10-01',
+'2021-02-03', 184, 1, 'Shampoo para cabelos lisos, embalagem rosa');
+
+INSERT INTO estoque (codProduto, nomeProduto, codFornecedor, codFuncionario, nomeFuncionario, categoria, 
+precoUnidade, codLote, dataRecebimento, dataFabricacao, dataValidade, qtdeEstoque, ativo, obs) VALUES ('89652',
+'Vinho Tinto Portugol', '12345', '0140', 'Cristiano Oliveira', 'bebidas', 62.45, '0159', '2018-09-13', '2018-09-05',
+'2019-12-09', 102, 0, '');
